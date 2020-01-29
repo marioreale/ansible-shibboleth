@@ -19,14 +19,23 @@
    mode: "0644" 
   tags: common
 
-- name: "Configure the nameservers in the resolver"
-  template:
-   src: resolv.conf.j2
+- name: "Configure the resolver"
+  copy:
+   src: "{{ files_dir }}/all/resolv.conf"
    dest: /etc/resolv.conf
    owner: "root"
    group: "root"
-   mode: "0644"
+   mode: "0644" 
   tags: common
+
+#- name: "Configure the nameservers in the resolver"
+#  template:
+#   src: resolv.conf.j2
+#   dest: /etc/resolv.conf
+#   owner: "root"
+#   group: "root"
+#   mode: "0644"
+#  tags: common
 
 - name: "Add root user's password"
   user:
@@ -98,6 +107,18 @@
   when:  
    - sources_list.changed
   tags: common
+
+
+- name: "Ansible | Print a variable if defined"
+  debug:
+    msg: "The 'ntp_servers' variable value is {{ ntp_servers}}"
+  when: ntp_servers is defined
+
+- name: "Ansible | Print a message if a variable is undefined"
+  debug:
+    msg: "The 'ntp_servers' variable is undefined"
+  when: ntp_servers is not defined
+
 
 - name: "Configure NTP service"
   template: 
