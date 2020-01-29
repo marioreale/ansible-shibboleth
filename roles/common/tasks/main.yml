@@ -109,15 +109,15 @@
   tags: common
 
 
-- name: "Ansible | Print a variable if defined"
-  debug:
-    msg: "The 'ntp_servers' variable value is {{ ntp_servers}}"
-  when: ntp_servers is defined
-
-- name: "Ansible | Print a message if a variable is undefined"
-  debug:
-    msg: "The 'ntp_servers' variable is undefined"
-  when: ntp_servers is not defined
+#- name: "Ansible | Print a variable if defined"
+#  debug:
+#    msg: "The 'ntp_servers' variable value is {{ ntp_servers}}"
+#  when: ntp_servers is defined
+#
+#- name: "Ansible | Print a message if a variable is undefined"
+#  debug:
+#    msg: "The 'ntp_servers' variable is undefined"
+#  when: ntp_servers is not defined
 
 
 - name: "Configure NTP service"
