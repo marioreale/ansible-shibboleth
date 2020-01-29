@@ -77,7 +77,8 @@ idp.encryption.cert= %{idp.home}/credentials/idp-encryption.crt
 #idp.session.enabled = true
 
 # Set to "shibboleth.StorageService" for server-side storage of user sessions
-idp.session.StorageService = shibboleth.ClientSessionStorageService
+#idp.session.StorageService = shibboleth.ClientSessionStorageService
+idp.session.StorageService = shibboleth.JPAStorageService 
 
 # Size of session IDs
 #idp.session.idSize = 32
